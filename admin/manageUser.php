@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+              label {
+    color: #fff;
+}
+div.dt-container select.dt-input {
+    padding: 4px;
+    margin: 9px;
+}
+    </style>
+</head>
+<?php include("./Inculde/head.php"); ?>
+<?php include("./Database/connection.php"); ?>
+
+
+
+<body>
+    <div class="container-fluid position-relative d-flex p-0">
+        <!-- Spinner Start -->
+        <!-- <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div> -->
+        <!-- Spinner End -->
+
+        <!-- Sidebar Start -->
+        <?php include("./Inculde/sidebar.php") ?>
+        <!-- Sidebar End -->
+
+        <!-- Content Start -->
+        <div class="content">
+
+            <!-- Navbar Start -->
+            <?php include("./Inculde/navbar.php") ?>
+            <!-- Navbar End -->
+
+            <!-- Sale & Revenue Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Today Sale</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Total Sale</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Today Revenue</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Total Revenue</p>
+                                <h6 class="mb-0">$1234</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sale & Revenue End -->
+
+            <!-- Recent Sales Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <a href="addUser.php">
+                            <h6 class="mb-0"><i class="fa-solid fas fa-plus mx-2" style="color: #EB1616;"></i> Create New Account</h6>
+                        </a>
+                      
+                    </div>
+                    <div class="table-responsive">
+                    
+                        <table id="example" class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col">id</th>
+                                    <th scope="col">User Name</th>
+                                    <th scope="col">User Email</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <?php
+                                $query  = "SELECT * FROM users";
+                                $res = mysqli_query($conn, $query);
+                                while ($row  = mysqli_fetch_array($res)) { ?>
+                                    <tr>
+                                        <td><?php echo $row[0]; ?></td>
+                                        <td><?php echo $row[1]; ?></td>
+                                        <td><?php echo $row[2]; ?></td>
+                                       
+                                        <td>
+                                            <a class="btn btn-sm bg-warning text-white" href="editUser.php?id=<?php echo $row[0]; ?>">Edit</a>
+                                            <a class="btn btn-sm btn-primary" href="DeleteUser.php?id=<?php echo $row[0]; ?>">Delete</a>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                           
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Recent Sales End -->
+
+            <!-- Footer Start -->
+            <?php include("./Inculde/footer.php"); ?>
+            <!-- Footer End -->
+        </div>
+        <!-- Content End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/chart/chart.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <!-- all js here -->
+    <!-- jquery latest version -->
+    <script src="js/vendor/jquery-3.2.1.min.js"></script>
+    <!-- tether js -->
+    <script src="js/tether.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- owl.carousel js -->
+    <script src="js/owl.carousel.min.js"></script>
+    <!-- bxslider js -->
+    <script src="js/jquery.bxslider.min.js"></script>
+    <!-- isotope js -->
+    <script src="js/isotope.pkgd.min.js"></script>
+    <!-- magnific popup js -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- meanmenu js -->
+    <script src="js/jquery.meanmenu.js"></script>
+    <!-- jarallax js -->
+    <script src="js/jarallax.min.js"></script>
+    <!-- jquery-ui js -->
+    <script src="js/jquery-ui.min.js"></script>
+    <!-- Bootstrap Touchspin js -->
+    <script src="js/jquery.bootstrap-touchspin.min.js"></script>
+    <!-- Progressbar Animation js -->
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- wow js -->
+    <script src="js/wow.min.js"></script>
+    <!-- plugins js -->
+    <script src="js/plugins.js"></script>
+    <!-- main js -->
+    <script src="js/main.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+
+
+</body>
+
+</html>
+<script>
+  
+$(document).ready(function(){
+    $("#example").DataTable();
+})
+
+
+</script>
